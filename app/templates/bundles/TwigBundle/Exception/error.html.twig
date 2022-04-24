@@ -1,0 +1,11 @@
+{# TODO Faire la mise en page #}
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1 class="text-center">Page non trouvé</h1>
+    <hr>
+
+    <h3>La page que vous cherchez n'existe pas :'(</h3>
+    <p> <a href="{{ path('app_home') }}">Retourner sur la page précédente</a>.</p>
+{% endblock %}

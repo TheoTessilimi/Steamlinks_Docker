@@ -1,0 +1,53 @@
+{# TODO Faire le style de la page #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Amis{% endblock %}
+
+{% block content %}
+    <table class="table table-hover mt-3">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col" class="text-center">Pseudo :</th>
+            <th scope="col" class="text-center">Dernière connexion :</th>
+            <th scope="col" class="text-center">Ami depuis :</th>
+            <th scope="col" class="text-center">Voir les stats du joueur</th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for user in users %}
+        <tr>
+            <th scope="row" class="text-center"><img src="{{ user.steam.avatar }}"></th>
+            <td class="text-center">{{ user.steam.personaname }}</td>
+            <td class="text-center">{{ user.steam.lastlogoff | date("d/m/Y") }}</td>
+            <td class="text-center">{{ user.friendSince | date("d/m/Y") }}</td>
+            <td class="text-center"><a href="{{ path('app_user_details', { 'steamid' : user.steam.steamid}) }}" class="btn btn-secondary pt-1">Cliquer ici !</a></td>
+
+        </tr>
+    {% endfor %}
+
+        </tbody>
+    </table>
+
+    <nav aria-label="..." class="pt-5">
+        <ul class="pagination justify-content-center">
+            <li class="page-item {% if actualPage == 1 %}disabled{% endif %}">
+                <a class="page-link" href="?page={{ actualPage - 1  }}">précédant</a>
+            </li>
+            {% for item in 1..(nbFriends/itemLimits)|round(0, 'ceil') %}
+                {% if item == actualPage %}
+                    <li class="page-item active">
+                        <span class="page-link">{{ item }}</span>
+                    </li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ item }}">{{ item }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            <li class="page-item {% if actualPage == (nbFriends/itemLimits)|round(0, 'ceil') %}disabled{% endif %}">
+                <a class="page-link" href="?page={{ actualPage + 1  }}">suivant</a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %}
+

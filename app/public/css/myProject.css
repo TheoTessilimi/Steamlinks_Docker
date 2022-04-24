@@ -1,0 +1,66 @@
+main > .container {
+    padding: 80px 15px 0;
+}
+.links{
+    font-size: 18px;
+    padding-top: 15px;
+    margin-left: 8px;
+}
+.loader {
+    position : fixed;
+    z-index: 9999;
+    top : 0px;
+    left : 0px;
+    height : 100%;
+    width : 100%;
+    cursor : wait;
+}
+.links:hover{
+    color: blue;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.steamlinks{
+    font-weight: bold;
+    font-size: xx-large;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.pseudo{
+    color: #6c6c6c;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+    margin-right: 10px;
+}
+.logout{
+    color: #7d7b7b;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+    background-color: #595959;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.logout:hover{
+    color: #7d7b7b;
+    background-color: #737373;
+}
+.text{
+    float: right;
+    font-size: 25px;
+}
+.linkedin-icon{
+    float: right;
+    place-content: center;
+}
+.btn-account{
+    border-radius:10px 0;
+    text-decoration: none;
+}
+span{
+    font-weight: bold;
+}
+*{
+    font-family: Bahnschrift, serif;
+}

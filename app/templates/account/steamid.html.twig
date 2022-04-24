@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SteamID{% endblock %}
+
+{% block content %}
+    <h2 class="text-center">Vous pouvez ajouter ou modifier votre Steam ID ici :</h2>
+    <hr>
+    {% if notification %}
+        <div class="alert alert-info text-center">{{ notification }}</div>
+        <hr>
+    {% endif %}
+    {{ form(form)  }}
+    <form action="https://steamcommunity.com/openid/login" method="post">
+    <input type="hidden" name="openid.identity" value="http://specs.openid.net/auth/2.0/identifier_select">
+    <input type="hidden" name="openid.claimed_id" value="http://specs.openid.net/auth/2.0/identifier_select">
+    <input type="hidden" name="openid.ns" value="http://specs.openid.net/auth/2.0">
+    <input type="hidden" name="openid.mode" value="checkid_setup">
+    <input type="hidden" name="openid.realm" value="{{ actual_link }}">
+    <input type="hidden" name="openid.return_to" value="{{ actual_link }}">
+    <input type="image" name="submit" src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/steamworks_docs/french/sits_large_border.png" border="0" alt="Submit">
+    <br>
+    </form>
+    <br>
+    <button type="button" class="btn btn-secondary">Revenir à mon compte !</button>
+{% endblock %}
+

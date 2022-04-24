@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block content %}
+    <h1>Bienvenue sur votre compte {{ app.user.getFullName }}</h1>
+    <hr>
+    <div class="row">
+        <a class="col d-grid btn-account"> <button class="btn btn-secondary btn-account" type="button">Modifier vos information personnelles</button></a>
+        <a href="{{ path('app_account_steamid') }}" class="col d-grid btn-account" ><button class="btn btn-secondary btn-account" type="button" href="{{ path('app_account_steamid') }}">Modifier votre steam id</button></a>
+    </div>
+{% endblock %}

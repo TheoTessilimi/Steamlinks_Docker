@@ -1,0 +1,97 @@
+PHPUnit 9.5.20 [44m#StandWith[0m[43mUkraine[0m
+
+Testing 
+.<!doctype html>
+<html lang="fr" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Inscription</title>
+
+
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/myProject.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column h-100">
+
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand steamlinks" href="/">SteamLinks</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                                        </ul>
+                                    <div class="btn-group login&logout" role="group">
+                        <a class="btn btn-secondary" href="/login">Connexion</a><a class="btn btn-secondary" href="/register">Inscription</a>
+                    </div>
+                            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+            <div class="block-small">
+        <form method="post">
+                <br>
+    <h2 class="text-center">Merci de vous inscrire pour continuer.</h2>
+    <hr>
+    <form name="register" method="post"><div id="register"><div class="mb-3"><label for="register_pseudo" class="form-label required">Votre pseudo :</label><input type="text" id="register_pseudo" name="register[pseudo]" required="required" placeholder="Jdupt" class="form-control" />        </div><div class="mb-3"><label for="register_firstname" class="form-label required">Votre prénom :</label><input type="text" id="register_firstname" name="register[firstname]" required="required" placeholder="Jean" class="form-control" />        </div><div class="mb-3"><label for="register_lastname" class="form-label required">Votre nom :</label><input type="text" id="register_lastname" name="register[lastname]" required="required" placeholder="Dupont" class="form-control" />        </div><div class="mb-3"><label for="register_email" class="form-label required">Votre email :</label><input type="email" id="register_email" name="register[email]" required="required" placeholder="Jean.Dupont@gmail.com" class="form-control" />        </div><div class="mb-3"><label for="register_password_first" class="form-label required">Mot de passe :</label><input type="password" id="register_password_first" name="register[password][first]" required="required" placeholder="Merci de saisir votre mot de passe." class="form-control" />        </div><div class="mb-3"><label for="register_password_second" class="form-label required">Mot de passe :</label><input type="password" id="register_password_second" name="register[password][second]" required="required" placeholder="Merci de confirmez votre mot de passe." class="form-control" />        </div><div class="mb-3"><button type="submit" id="register_submit" name="register[submit]" class="btn-primary btn">Envoyer</button></div><input type="hidden" id="register__token" name="register[_token]" value="eeda14a145395121d3bedfffb8daa83._uaYWLHfTrx4pXYpU7WKLP_6v00Cn4p6VtyllZ8XTPY.kNLOa-u-AooaxxBaY-O-TaCV-h5b5-ZLJq7RovVmdYaa0eho87N3zhL9GQ" /></div></form>
+    </div>
+</main>
+
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+        &copy;2022 SteamLinks &middot; <small>Le premier site du portfolio de Théo TESSILIMI</small>
+        <a href="http://www.linkedin.com/in/theo-tessilimi" class="linkedin-icon" target="blank"><img src="/images/logo-linkedin.png" alt="linkedin"></a>
+    </div>
+</footer>
+
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+
+</body>
+</html>
+.                                                                  2 / 2 (100%)
+
+Time: 00:00.369, Memory: 34.00 MB
+
+OK (2 tests, 4 assertions)
+
+Remaining indirect deprecation notices (1)
+
+  1x: The "Symfony\Bridge\Doctrine\Logger\DbalLogger" class implements "Doctrine\DBAL\Logging\SQLLogger" that is deprecated Use {@see \Doctrine\DBAL\Logging\Middleware} or implement {@see \Doctrine\DBAL\Driver\Middleware} instead.
+    1x in RegisterControllerTest::testRegisterPage from App\Tests\Controller
+

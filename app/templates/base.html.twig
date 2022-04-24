@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>{% block title %}{% endblock %}</title>
+
+
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/myProject.css') }}" rel="stylesheet">
+</head>
+<body class="d-flex flex-column h-100">
+
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand steamlinks" href="{{ path('app_home') }}">SteamLinks</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        {% if app.user %}
+                            <li class="nav-item">
+                                <a class="nav-link active links" href="{{ path('app_account') }}">Mon compte</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link links {%  if not app.user.steamID %}{% else %}active {% endif %}" href="{%  if not app.user.steamID %}{{ path('app_account_steamid') }}{% else %}{{ path('app_user_details', { 'steamid' : app.user.steamID}) }} {% endif %}">Mes stats</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active links" href="{{ path('app_users') }}">Mes amis</a>
+                            </li>
+                        {% endif %}
+                </ul>
+                {% if not app.user %}
+                    <div class="btn-group login&logout" role="group">
+                        <a class="btn btn-secondary" href="{{ path('app_login') }}">Connexion</a><a class="btn btn-secondary" href="{{ path('app_register') }}">Inscription</a>
+                    </div>
+                {% else %}
+                    <span class="pseudo">{{ app.user.pseudo }}</span><a class="nav-link btn logout " href="{{ path('app_logout') }}">Déconnexion</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+        {% block content %}
+
+            {%  endblock %}
+    </div>
+</main>
+
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+        &copy;2022 SteamLinks &middot; <small>Le premier site du portfolio de Théo TESSILIMI</small>
+        <a href="http://www.linkedin.com/in/theo-tessilimi" class="linkedin-icon" target="blank"><img src="{{ asset('images/logo-linkedin.png') }}" alt="linkedin"></a>
+    </div>
+</footer>
+
+
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+
+</body>
+</html>

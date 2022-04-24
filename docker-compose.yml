@@ -1,0 +1,64 @@
+version: '3.9'
+services:
+  web:
+    build: ./nginx/.
+    ports:
+      - "8080:80"
+    networks:
+      - app
+    volumes:
+      - ./app:/var/www:cached
+      - /var/www/vendor
+      - /var/www/var
+
+  php:
+    build:
+      context: app/.
+    tty: true
+    expose:
+      -   9000
+    volumes:
+      - ./app:/var/www:cached
+      - /var/www/vendor
+      - /var/www/var
+    networks:
+      - app
+    environment:
+      KEY_STEAM: ${KEY_STEAM}
+
+  db:
+    image: postgres:14
+    restart: always
+    ports:
+      -   "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_DB: Steamlinks_DEV
+    networks:
+      - app
+    volumes:
+      - db:/var/lib/postgressql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin4@pgadmin.org
+      - PGADMIN_DEFAULT_PASSWORD=admin1234
+    ports:
+      - '5050:5050'
+    restart: always
+    volumes:
+      - pgadmin:/root/.pgadmin
+    networks:
+      - app
+
+
+volumes:
+  db:
+    driver: local
+  var:
+  vendor:
+  pgadmin:
+networks:
+  app:

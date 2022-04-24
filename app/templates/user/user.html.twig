@@ -1,0 +1,135 @@
+{# TODO Faire le style de la page #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques{% endblock %}
+
+{% block content %}
+    {% if users == null %}
+        <h1>Pas de statistique trouvé pour ce joueur !</h1>
+    {% else %}
+        <h1 class="text-center">Voici les stats pour sur csgo pour <b>{{ pseudo }}.<img src="{{ avatar }}" alt="avatar"></b></h1>
+        <br>
+        <h3 class="text-center">Heures de jeu total : {{ (users.total_time_played / 3600) | number_format(0) }} H </h3>
+        <hr>
+        <h3 class="text-center">Score Global</h3>
+        <hr>
+
+        <table class="table text-center">
+            <tbody>
+            <tr>
+                <td>
+                    Nombre de kill <br>
+                    <span>{{ users.total_kills }}</span>
+                </td>
+                <td>
+                    Nombre de mort <br>
+                    <span>{{ users.total_deaths }}</span>
+                </td>
+                <td>
+                    Ratio K/D <br>
+                    <span>{{ (users.total_kills / users.total_deaths) |number_format(2) }}</span>
+                </td>
+                <td>
+                    Pourcentage de headshot <br>
+                    <span>{{ (100*users.total_kills_headshot/users.total_kills) | number_format(2) }}%</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Victoire<br>
+                    <span>{{ users.total_matches_won }}</span>
+                </td>
+                <td>
+                    Défaites<br>
+                    <span>{{ users.total_matches_played - users.total_matches_won }}</span>
+                </td>
+                <td>
+                    Ratio Win/Losses<br>
+                    <span>{{ (100*users.total_matches_won/(users.total_matches_played)) | number_format(2) }}%</span>
+                </td>
+                <td>
+                    Score<br>
+                    <span>{{ users.total_contribution_score }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Dégâts <br>
+                    <span>{{ users.total_damage_done }}</span>
+                </td>
+                <td>
+                    Précision des tir <br>
+                    <span>{{ (100*users.total_shots_hit/users.total_shots_fired) | number_format(2) }} %</span>
+                </td>
+                <td>
+                    Nombre de bombes planté <br>
+                    <span>{{ users.total_planted_bombs }}</span>
+                </td>
+                <td>
+                    Nombre de bombes désamorcé <br>
+                   <span>{{ users.total_defused_bombs}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <h3 class="text-center">Dernier Match</h3>
+        <hr>
+        <table class="table text-center">
+            <tbody>
+            <tr>
+                <td>
+                    Nombre de kill <br>
+                    <span>{{ users.last_match_kills }}</span>
+                </td>
+                <td>
+                    Nombre de mort <br>
+                    <span>{{ users.last_match_deaths }}</span>
+                </td>
+                <td>
+                    Ratio K/D <br>
+                    <span>{{ (users.last_match_kills / users.last_match_deaths) |number_format(2) }}</span>
+                </td>
+                <td>
+                    Nombre de mvp <br>
+                    <span>{{ users.last_match_mvps }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Victoire côté CT<br>
+                    <span>{{ users.last_match_ct_wins }}</span>
+                </td>
+                <td>
+                    Victoire côte T<br>
+                    <span>{{ users.last_match_t_wins }}</span>
+                </td>
+                <td>
+                    Nombre de rounds<br>
+                    <span>{{ users.last_match_rounds }}</span>
+                </td>
+                <td>
+                    Score<br>
+                    <span>{{ users.total_contribution_score }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    /
+                </td>
+                <td>
+                    Argent dépensé<br>
+                    <span>{{ users.last_match_money_spent }} </span>
+                </td>
+                <td>
+                    Dégâts infligé<br>
+                    <span>{{ users.last_match_damage }}</span>
+                </td>
+                <td>
+                    /
+                </td>
+            </tr>
+            </tbody>
+        </table>
+{% endif %}
+{% endblock %}
+
